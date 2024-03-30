@@ -25,19 +25,7 @@ npm --version
 ```
 npm install -g hexo-cli
 ```
-
-我们推荐用如下文件树对博客文件进行管理：
-
-```
-- (root) blog
-	- hexo
-		- ...
-	- ...
-```
-
-其中 ```blog``` 是所有博客资源的管理目录，```hexo``` 目录会装载 ```hexo``` 包来管理博客内容。
-
-在你喜欢的目录下执行以下指令：
+在你喜欢的目录（本文用```/hexo``` 目录代替）下执行以下指令：
 
 ```
 mkdir blog && cd blog
@@ -45,7 +33,7 @@ mkdir hexo && cd hexo
 hexo init
 ```
 
-以上，我们完成了基础环境的搭建。如果想要知道当前环境下安装了哪些包，只需要在 ```/blog/hexo``` 目录下执行指令：
+以上，我们完成了基础环境的搭建。如果想要知道当前环境下安装了哪些包，只需要在 ```/hexo``` 目录下执行指令：
 
 ```
 npm list --depth=0
@@ -75,10 +63,9 @@ hexo-site@0.0.0 /yourpath/blog/hexo
 npm i hexo-theme-next
 ```
 
-并更改：```blog/_config.yml``` 文件
+并更改：```/hexo/_config.yml``` 文件
 
 ```yaml
-# blog/_config.yml
 theme: next
 ```
 
@@ -122,7 +109,7 @@ npm un hexo-renderer-marked --save
 npm i hexo-renderer-markdown-it-plus --save
 ```
 
-在 ```hexo/_config.yml``` 中添加如下内容：
+在 ```/hexo/_config.yml``` 中添加如下内容：
 
 ```yaml
 markdown_it_plus:
@@ -137,7 +124,7 @@ markdown_it_plus:
   pre_class: highlight
 ```
 
-在 ```hexo/node_modules/hexo-theme-next/_config.yml``` 更改如下设置：
+在 ```/hexo/node_modules/hexo-theme-next/_config.yml``` 更改如下设置：
 
 ```yaml
 math:
@@ -156,7 +143,7 @@ math:
 hexo new post "Markdown Render Example"
 ```
 
-并在 ```hexo/source/_posts``` 之中的对应文章中添加如下内容：
+并在 ```/hexo/source/_posts``` 之中的对应文章中添加如下内容：
 
 ```text
 Inline math: $e^{i\pi} + 1 = 0$, and block math:
@@ -167,4 +154,4 @@ $$
 
 期望效果如下：
 
-![](../../resources/figures/markdown-render-exmaple.png)
+![0](markdown-render-exmaple.png)
