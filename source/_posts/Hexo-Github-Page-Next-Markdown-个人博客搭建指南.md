@@ -2,7 +2,8 @@
 title: Hexo + Github Page + Next + Markdown 个人博客搭建指南
 abbrlink: c5f6c3bd
 date: 2024-03-30 17:45:17
-tags:
+tags: [hexo, blog]
+categories: [other]
 ---
 
 来折腾一个自己的博客吧！
@@ -11,7 +12,7 @@ tags:
 
 # 环境配置
 
-安装版本控制工具 [Git](https://git-scm.com/downloads) 和 [Nodejs](https://nodejs.org/en/download) （包括包管理软件 ```npm```）。
+安装版本控制工具 [Git](https://git-scm.com/downloads) 和 [Nodejs](https://nodejs.org/en/download) （包括包管理软件 ``npm``）。
 
 > **Git** 是一个开源的分布式版本控制系统，旨在处理从小到大的项目与速度和效率。Git 的核心理念是，让代码版本控制变得简单且高效，特别是支持非线性开发过程。在 Git 中，每个工作副本实际上都是一个带有完整历史和完整版本跟踪能力的仓库，不依赖网络访问或中央服务器。
 >
@@ -26,7 +27,7 @@ v20.12.0
 10.5.0
 ```
 
-在这之后通过 ```npm``` 安装 ```hexo-cli```（如果安装过程提示 ```permission denied``` 就加上 ```sudo```）：
+在这之后通过 ``npm`` 安装 ``hexo-cli``（如果安装过程提示 ``permission denied`` 就加上 ``sudo``）：
 
 ```
 npm install -g hexo-cli
