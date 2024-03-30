@@ -3,7 +3,7 @@ title: Hexo + Github Page + Next + Markdown 个人博客搭建指南
 abbrlink: c5f6c3bd
 date: 2024-03-30 17:45:17
 tags: [hexo, blog]
-categories: [other]
+categories: [Other]
 ---
 
 来折腾一个自己的博客吧！
