@@ -269,3 +269,64 @@ hexo-site@0.0.0 /home/yangkai/blog/hexo
 ├── hexo-server@3.0.0
 └── hexo@6.3.0
 ```
+
+# 后续折腾
+
+## 暴打图片显示 BUG 邪道
+
+直接从 github 安装 archive 版本的 ```hexo-asset-image```
+
+```
+npm install https://github.com/xcodebuild/hexo-asset-image
+```
+
+这样不管怎么改 ```permalink``` 都没事啦。
+
+## 增添文章的独特链接并解决兼容问题
+
+安装 ```hexo-abbrlink``` 插件：
+
+```
+npm install hexo-abbrlink --save
+```
+
+修改/增添配置```/hexo/_config.yml```如下：
+
+```
+permalink: post/:abbrlink.html
+abbrlink:
+  alg: crc32
+  rep: hex
+```
+
+丝毫不出人意料的是图片又裂开了。观察到如下日志：
+
+```
+update link as:-->/post/c5f6c3bd.htm/markdown-render-exmaple.png
+```
+
+我们设置的 ```permalink``` 为 ```post/:abbrlink.html```，但是图片的链接却变成了 ```/post/c5f6c3bd.htm/*```，这就导致了图片无法显示。
+
+我们的 ```l``` 被删掉了，但是 ```.htm``` 却留下来了。不难看出这是因为 ```hexo-asset-image``` 插件采用硬编码计算路径导致的。我们可以通过修改 ```/hexo/node_modules/hexo-asset-image/index.js``` 文件解决这个问题。
+
+第 24 行的：
+
+```javascript
+      var endPos = link.length-1;
+```
+
+改为：
+
+```javascript
+      var endPos = link.length-5;
+```
+
+新的日志变为：
+
+```
+update link as:-->/post/c5f6c3bd/markdown-render-exmaple.png
+```
+
+计划通。
+
+再次生成静态页面，发现图片显示回归正常。
