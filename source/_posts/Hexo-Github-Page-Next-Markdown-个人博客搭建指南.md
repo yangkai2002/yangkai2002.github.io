@@ -15,9 +15,10 @@ tags:
 使用以下指令检查是否安装成功：
 
 ```
-git --version
-node --version
-npm --version
+yangkai@YangKai:~/blog/hexo$ git --version && node --version && npm --version
+git version 2.34.1
+v20.12.0
+10.5.0
 ```
 
 在这之后通过 ```npm``` 安装 ```hexo-cli```（如果安装过程提示 ```permission denied``` 就加上 ```sudo```）：
@@ -37,22 +38,6 @@ hexo init
 
 ```
 npm list --depth=0
-```
-
-你可能会得到类似如下的输出：
-
-```
-hexo-site@0.0.0 /yourpath/blog/hexo
-├── hexo-generator-archive@2.0.0
-├── hexo-generator-category@2.0.0
-├── hexo-generator-index@3.0.0
-├── hexo-generator-tag@2.0.0
-├── hexo-renderer-ejs@2.0.0
-├── hexo-renderer-marked@6.2.0
-├── hexo-renderer-stylus@2.1.0
-├── hexo-server@3.0.0
-├── hexo-theme-landscape@1.0.0
-└── hexo@6.3.0
 ```
 
 # 更换 Next 主题
@@ -154,7 +139,7 @@ $$
 
 期望效果如下：
 
-![0](markdown-render-exmaple.png)
+![0](/Hexo-Github-Page-Next-Markdown-个人博客搭建指南/markdown-render-exmaple.png)
 
 # 部署到 Github Page
 
@@ -238,4 +223,58 @@ rm -rf .git
 git add .
 git commit -m "The Message You Want"
 git push -u origin main
+```
+
+# 图片管理以及显示 BUG 修复方案
+
+## 图片管理
+
+可以在 ```/hexo/_config.yml``` 中添加如下配置：
+
+```yaml
+post_asset_folder: true
+```
+
+这样在每次新建文章时，会自动在 ```/hexo/source/_posts``` 目录下创建一个与文章同名的文件夹，用于存放文章中的图片。
+
+## 图片无法显示 BUG
+
+在使用的过程中如果遇见图片无法显示的问题，我们可以通过 ```F12``` 看一下加载错误的图片究竟发送了一个什么请求，看看它和 ```/hexo/public``` 文件夹中的图片相对路径到底一不一样。
+
+我的问题表现为：实际上图片的路径为 ```/:year/:month/:day/:title/xxx.png```，但是请求的路径为 ```/xxx.png```，这就导致了图片无法显示。
+
+我尝试了许多网络上已有的方案，例如添加 ```hexo-asset-image``` 包等等，但这些方案都无法解决我的问题。
+
+最终我找到了一个叫做 ```markdown-it-plus-image``` 的包，它可以在图片的名字前面加上 ```:title/```。这给我们提供了一种非常邪道的解决方案，具体操作是修改 ```/hexo/_config.yml``` 文件：
+
+```yaml
+# permalink: :year/:month/:day/:title/
+permalink: :title/
+
+markdown_it_plus:
+  ...
+  plugins:
+    - plugin:
+        name: markdown-it-plus-image
+        enable: true
+```
+
+这会强行同步所有文章和图片的永久链接使文章中的图片能够被正确访问。
+
+# 总结
+
+提供最终包版本列表如下：
+```
+yangkai@YangKai:~/blog/hexo$ npm list
+hexo-site@0.0.0 /home/yangkai/blog/hexo
+├── hexo-generator-archive@2.0.0
+├── hexo-generator-category@2.0.0
+├── hexo-generator-index@3.0.0
+├── hexo-generator-tag@2.0.0
+├── hexo-renderer-ejs@2.0.0
+├── hexo-renderer-markdown-it-plus@1.0.6
+├── hexo-renderer-stylus@2.1.0
+├── hexo-server@3.0.0
+├── hexo@6.3.0
+└── markdown-it-plus-image@1.0.2
 ```
