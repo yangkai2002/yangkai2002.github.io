@@ -16,6 +16,10 @@ timezone: 'Asia/Shanghai'
 url: https://yangkai2002.github.io/
 # permalink: :year/:month/:day/:title/
 permalink: :title/
+# permalink: post/:abbrlink.html
+# abbrlink:
+#   alg: crc32
+#   rep: hex
 permalink_defaults:
 pretty_urls:
   trailing_index: true # Set to false to remove trailing 'index.html' from permalinks
@@ -115,7 +119,9 @@ markdown_it_plus:
   typographer:
   quotes: “”‘’
   pre_class: highlight
-  plugins:
-    - plugin:
-        name: markdown-it-plus-image
-        enable: true
+
+search:
+  path: search.json
+  field: post
+  format: html
+  limit: 1000
