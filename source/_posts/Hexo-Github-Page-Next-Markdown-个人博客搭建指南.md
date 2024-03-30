@@ -242,22 +242,13 @@ post_asset_folder: true
 
 在使用的过程中如果遇见图片无法显示的问题，我们可以通过 ```F12``` 看一下加载错误的图片究竟发送了一个什么请求，看看它和 ```/hexo/public``` 文件夹中的图片相对路径到底一不一样。
 
-我的问题表现为：实际上图片的路径为 ```/:year/:month/:day/:title/xxx.png```，但是请求的路径为 ```/xxx.png```，这就导致了图片无法显示。
+我的问题表现为：实际上图片的路径为 ```/:year/:month/:day/:title/xxx.png```，但是请求的路径为 ```:title/xxx.png```，这就导致了图片无法显示。
 
-我尝试了许多网络上已有的方案，例如添加 ```hexo-asset-image``` 包等等，但这些方案都无法解决我的问题。
-
-最终我找到了一个叫做 ```markdown-it-plus-image``` 的包，它可以在图片的名字前面加上 ```:title/```。这给我们提供了一种非常邪道的解决方案，具体操作是修改 ```/hexo/_config.yml``` 文件：
+这给我们提供了一种非常邪道的解决方案，具体操作是修改 ```/hexo/_config.yml``` 文件：
 
 ```yaml
 # permalink: :year/:month/:day/:title/
 permalink: :title/
-
-markdown_it_plus:
-  ...
-  plugins:
-    - plugin:
-        name: markdown-it-plus-image
-        enable: true
 ```
 
 这会强行同步所有文章和图片的永久链接使文章中的图片能够被正确访问。
@@ -276,6 +267,5 @@ hexo-site@0.0.0 /home/yangkai/blog/hexo
 ├── hexo-renderer-markdown-it-plus@1.0.6
 ├── hexo-renderer-stylus@2.1.0
 ├── hexo-server@3.0.0
-├── hexo@6.3.0
-└── markdown-it-plus-image@1.0.2
+└── hexo@6.3.0
 ```
