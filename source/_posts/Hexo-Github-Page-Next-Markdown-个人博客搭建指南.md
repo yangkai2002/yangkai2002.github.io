@@ -12,7 +12,7 @@ categories: [Other]
 
 # 环境配置
 
-安装版本控制工具 [Git](https://git-scm.com/downloads) 和 [Nodejs](https://nodejs.org/en/download) （包括包管理软件 ``npm``）。
+安装版本控制工具 [Git](https://git-scm.com/downloads) 和 [Nodejs](https://nodejs.org/en/download) （包括包管理软件 `npm`）。
 
 > **Git** 是一个开源的分布式版本控制系统，旨在处理从小到大的项目与速度和效率。Git 的核心理念是，让代码版本控制变得简单且高效，特别是支持非线性开发过程。在 Git 中，每个工作副本实际上都是一个带有完整历史和完整版本跟踪能力的仓库，不依赖网络访问或中央服务器。
 >
@@ -27,12 +27,12 @@ v20.12.0
 10.5.0
 ```
 
-在这之后通过 ``npm`` 安装 ``hexo-cli``（如果安装过程提示 ``permission denied`` 就加上 ``sudo``）：
+在这之后通过 `npm` 安装 `hexo-cli`（如果安装过程提示 `permission denied` 就加上 `sudo`）：
 
 ```
 npm install -g hexo-cli
 ```
-在你喜欢的目录（本文用```/hexo``` 目录代替）下执行以下指令：
+在你喜欢的目录（本文用 `/hexo` 目录代替）下执行以下指令：
 
 ```
 mkdir blog && cd blog
@@ -40,7 +40,7 @@ mkdir hexo && cd hexo
 hexo init
 ```
 
-以上，我们完成了基础环境的搭建。如果想要知道当前环境下安装了哪些包，只需要在 ```/hexo``` 目录下执行指令：
+以上，我们完成了基础环境的搭建。如果想要知道当前环境下安装了哪些包，只需要在 `/hexo` 目录下执行指令：
 
 ```
 npm list --depth=0
@@ -48,13 +48,13 @@ npm list --depth=0
 
 # 更换 Next 主题
 
-安装 ```Next``` 主题包，为了方便自定义，我们直接克隆原始项目：
+安装 `Next` 主题包，为了方便自定义，我们直接克隆原始项目：
 
 ```
 git clone https://github.com/next-theme/hexo-theme-next themes/next
 ```
 
-并更改：```/hexo/_config.yml``` 文件
+并更改：`/hexo/_config.yml` 文件
 
 ```yaml
 theme: next
@@ -66,7 +66,7 @@ theme: next
 hexo clean && hexo g && hexo s
 ```
 
-在浏览器输入 ```http://localhost:4000/``` 以浏览网页。
+在浏览器输入 `http://localhost:4000/` 以浏览网页。
 
 # 添加 Markdown 数学公式支持
 
@@ -83,11 +83,11 @@ hexo clean && hexo g && hexo s
 Hexo 支持的 Markdown 渲染器通常来说有以下几种：
 
 * [hexo-renderer-marked](https://github.com/hexojs/hexo-renderer-marked) (default)
-  * 支持的渲染格式有限，而且容易发生冲突。可以通过  ```MathJax``` 支持 ``` $$ ... $$``` 的识别，但**不支持**识别 ```$ ... $```。
+  * 支持的渲染格式有限，而且容易发生冲突。可以通过  `MathJax` 支持 ` $$ ... $$` 的识别，但**不支持**识别 `$ ... $`。
 * [hexo-renderer-markdown-it](https://github.com/hexojs/hexo-renderer-markdown-it)
-  * 比 ```marked``` 更快而且仍在频繁维护中，但配置起来相对麻烦。
+  * 比 `marked` 更快而且仍在频繁维护中，但配置起来相对麻烦。
 * [hexo-renderer-markdown-it-plus](https://github.com/CHENXCHEN/hexo-renderer-markdown-it-plus)
-  * 与```markdown-it ``` 相比简单很多，而且其功能经过测试也是比较稳定的，因此我们选这个包。
+  * 与`markdown-it ` 相比简单很多，而且其功能经过测试也是比较稳定的，因此我们选这个包。
 * [hexo-renderer-pandoc](https://github.com/hexojs/hexo-renderer-pandoc)
   * 需要引入外部程序，这就很烦，不符合我小而美的博客美学，因此被我主观忽略掉了，后续如果有需要可以再研究研究分享一下。
 * [hexo-renderer-kramed](https://github.com/sun11/hexo-renderer-kramed)
@@ -100,7 +100,7 @@ npm un hexo-renderer-marked --save
 npm i hexo-renderer-markdown-it-plus --save
 ```
 
-在 ```/hexo/_config.yml``` 中添加如下内容：
+在 `/hexo/_config.yml` 中添加如下内容：
 
 ```yaml
 markdown_it_plus:
@@ -115,7 +115,7 @@ markdown_it_plus:
   pre_class: highlight
 ```
 
-在 ```/hexo/node_modules/hexo-theme-next/_config.yml``` 更改如下设置：
+在 `/hexo/node_modules/hexo-theme-next/_config.yml` 更改如下设置：
 
 ```yaml
 math:
@@ -134,7 +134,7 @@ math:
 hexo new post "Markdown Render Example"
 ```
 
-并在 ```/hexo/source/_posts``` 之中的对应文章中添加如下内容：
+并在 `/hexo/source/_posts` 之中的对应文章中添加如下内容：
 
 ```text
 Inline math: $e^{i\pi} + 1 = 0$, and block math:
@@ -151,7 +151,7 @@ $$
 
 ## 创建并关联 Github 仓库
 
-在 Github 上创建一个新的仓库，仓库名为 ```username.github.io```，其中 ```username``` 是你的 Github 用户名。在本地执行以下指令：
+在 Github 上创建一个新的仓库，仓库名为 `username.github.io`，其中 `username` 是你的 Github 用户名。在本地执行以下指令：
 
 ```
 git init
@@ -160,9 +160,9 @@ git remote add origin /your-repo-url
 
 ## 配置 Github Actions
 
-在 Github 仓库的 ```Settings``` 页面中找到 ```Pages``` 部分，选择 ```Github Actions``` 作为源。
+在 Github 仓库的 `Settings` 页面中找到 `Pages` 部分，选择 `Github Actions` 作为源。
 
-在 ```/hexo/.github/workflows``` 目录下创建一个 ```pages.yml``` 文件，内容如下，并将示例中的 ```20``` 改为你的 Node.js 版本（通过```node -v```查看）：
+在 `/hexo/.github/workflows` 目录下创建一个 `pages.yml` 文件，内容如下，并将示例中的 `20` 改为你的 Node.js 版本（通过`node -v`查看）：
 
 ```yaml
 name: Pages
@@ -216,7 +216,7 @@ jobs:
 ```
 ## 取消主题文件夹的子模块属性
 
-我们直接通过克隆获得了主题模块，这导致其被识别为 ```submodule```，我们可以如下操作：
+我们直接通过克隆获得了主题模块，这导致其被识别为 `submodule`，我们可以如下操作：
 
 ```
 cd themes/next
@@ -235,21 +235,21 @@ git push -u origin main
 
 ## 图片管理
 
-可以在 ```/hexo/_config.yml``` 中添加如下配置：
+可以在 `/hexo/_config.yml` 中添加如下配置：
 
 ```yaml
 post_asset_folder: true
 ```
 
-这样在每次新建文章时，会自动在 ```/hexo/source/_posts``` 目录下创建一个与文章同名的文件夹，用于存放文章中的图片。
+这样在每次新建文章时，会自动在 `/hexo/source/_posts` 目录下创建一个与文章同名的文件夹，用于存放文章中的图片。
 
 ## 图片无法显示 BUG
 
-在使用的过程中如果遇见图片无法显示的问题，我们可以通过 ```F12``` 看一下加载错误的图片究竟发送了一个什么请求，看看它和 ```/hexo/public``` 文件夹中的图片相对路径到底一不一样。
+在使用的过程中如果遇见图片无法显示的问题，我们可以通过 `F12` 看一下加载错误的图片究竟发送了一个什么请求，看看它和 `/hexo/public` 文件夹中的图片相对路径到底一不一样。
 
-我的问题表现为：实际上图片的路径为 ```/:year/:month/:day/:title/xxx.png```，但是请求的路径为 ```:title/xxx.png```，这就导致了图片无法显示。
+我的问题表现为：实际上图片的路径为 `/:year/:month/:day/:title/xxx.png`，但是请求的路径为 `:title/xxx.png`，这就导致了图片无法显示。
 
-这给我们提供了一种非常邪道的解决方案，具体操作是修改 ```/hexo/_config.yml``` 文件：
+这给我们提供了一种非常邪道的解决方案，具体操作是修改 `/hexo/_config.yml` 文件：
 
 ```yaml
 # permalink: :year/:month/:day/:title/
@@ -279,23 +279,23 @@ hexo-site@0.0.0 /home/yangkai/blog/hexo
 
 ## 暴打图片显示 BUG 邪道
 
-直接从 github 安装 archive 版本的 ```hexo-asset-image```（千万不要直接```npm install hexo-asset-image``` 下载，我折腾了半天，有大恐怖，会全身红毛晚年不幸）。
+直接从 github 安装 archive 版本的 `hexo-asset-image`（千万不要直接`npm install hexo-asset-image` 下载，我折腾了半天，有大恐怖，会全身红毛晚年不详）。
 
 ```
 npm install https://github.com/xcodebuild/hexo-asset-image
 ```
 
-这样不管怎么改 ```permalink``` 都没事啦。
+这样不管怎么改 `permalink` 都没事啦。
 
 ## 增添文章的独特链接并解决兼容问题
 
-安装 ```hexo-abbrlink``` 插件：
+安装 `hexo-abbrlink` 插件：
 
 ```
 npm install hexo-abbrlink --save
 ```
 
-修改/增添配置```/hexo/_config.yml```如下：
+修改/增添配置`/hexo/_config.yml`如下：
 
 ```
 permalink: post/:abbrlink.html
@@ -310,9 +310,9 @@ abbrlink:
 update link as:-->/post/c5f6c3bd.htm/markdown-render-exmaple.png
 ```
 
-我们设置的 ```permalink``` 为 ```post/:abbrlink.html```，但是图片的链接却变成了 ```/post/c5f6c3bd.htm/*```，这就导致了图片无法显示。
+我们设置的 `permalink` 为 `post/:abbrlink.html`，但是图片的链接却变成了 `/post/c5f6c3bd.htm/*`，这就导致了图片无法显示。
 
-我们的 ```l``` 被删掉了，但是 ```.htm``` 却留下来了。不难看出这是因为 ```hexo-asset-image``` 插件采用硬编码计算路径导致的。我们可以通过修改 ```/hexo/node_modules/hexo-asset-image/index.js``` 文件解决这个问题。
+我们的 `l` 被删掉了，但是 `.htm` 却留下来了。不难看出这是因为 `hexo-asset-image` 插件采用硬编码计算路径导致的。我们可以通过修改 `/hexo/node_modules/hexo-asset-image/index.js` 文件解决这个问题。
 
 第 24 行的：
 
