@@ -274,7 +274,7 @@ hexo-site@0.0.0 /home/yangkai/blog/hexo
 
 ## 暴打图片显示 BUG 邪道
 
-直接从 github 安装 archive 版本的 ```hexo-asset-image```
+直接从 github 安装 archive 版本的 ```hexo-asset-image```（千万不要直接```npm install hexo-asset-image``` 下载，我折腾了半天，有大恐怖，会全身红毛晚年不幸）。
 
 ```
 npm install https://github.com/xcodebuild/hexo-asset-image
