@@ -57,10 +57,10 @@ hexo-site@0.0.0 /yourpath/blog/hexo
 
 # 更换 Next 主题
 
-安装 ```Next``` 主题包：
+安装 ```Next``` 主题包，为了方便自定义，我们直接克隆原始项目：
 
 ```
-npm i hexo-theme-next
+git clone https://github.com/next-theme/hexo-theme-next themes/next
 ```
 
 并更改：```/hexo/_config.yml``` 文件
@@ -155,3 +155,87 @@ $$
 期望效果如下：
 
 ![0](markdown-render-exmaple.png)
+
+# 部署到 Github Page
+
+## 创建并关联 Github 仓库
+
+在 Github 上创建一个新的仓库，仓库名为 ```username.github.io```，其中 ```username``` 是你的 Github 用户名。在本地执行以下指令：
+
+```
+git init
+git remote add origin /your-repo-url
+```
+
+## 配置 Github Actions
+
+在 Github 仓库的 ```Settings``` 页面中找到 ```Pages``` 部分，选择 ```Github Actions``` 作为源。
+
+在 ```/hexo/.github/workflows``` 目录下创建一个 ```pages.yml``` 文件，内容如下，并将示例中的 ```20``` 改为你的 Node.js 版本（通过```node -v```查看）：
+
+```yaml
+name: Pages
+
+on:
+  push:
+    branches:
+      - main # default branch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          # If your repository depends on submodule, please see: https://github.com/actions/checkout
+          submodules: recursive
+      - name: Use Node.js 20.x
+        uses: actions/setup-node@v2
+        with:
+          node-version: '20'
+      - name: Cache NPM dependencies
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: ${{ runner.OS }}-npm-cache
+          restore-keys: |
+            ${{ runner.OS }}-npm-cache
+      - name: Install Dependencies
+        run: npm install
+      - name: Build
+        run: npm run build
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v2
+        with:
+          path: ./public
+  deploy:
+    needs: build
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
+```
+## 取消主题文件夹的子模块属性
+
+我们直接通过克隆获得了主题模块，这导致其被识别为 ```submodule```，我们可以如下操作：
+
+```
+cd themes/next
+rm -rf .git
+```
+
+## 部署到 Github
+
+```
+git add .
+git commit -m "The Message You Want"
+git push -u origin main
+```
