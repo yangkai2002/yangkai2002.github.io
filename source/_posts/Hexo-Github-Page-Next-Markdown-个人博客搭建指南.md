@@ -5,6 +5,10 @@ date: 2024-03-30 17:45:17
 tags:
 ---
 
+来折腾一个自己的博客吧！
+
+<!-- more -->
+
 # 环境配置
 
 安装版本控制工具 [Git](https://git-scm.com/downloads) 和 [Nodejs](https://nodejs.org/en/download) （包括包管理软件 ```npm```）。
