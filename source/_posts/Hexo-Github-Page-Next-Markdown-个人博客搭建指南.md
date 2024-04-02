@@ -338,6 +338,8 @@ update link as:-->/post/c5f6c3bd/markdown-render-exmaple.png
 
 ## 让 Google 能够搜索到自己的博客
 
+在 Google 搜索中输入 `site:your-blog-url`，如果没有搜索到自己的博客，那么就需要添加站点地图。
+
 [Google Search Console](https://search.google.com/search-console/welcome)
 
 进入这个站点，将包含`https://`的博客地址添加到右边的输入框中，然后选择其他验证方法-HTML标记，复制其中的 `context="XXX"` 中的 `XXX`，填入到 `themes/next/_config.yml`
@@ -346,12 +348,18 @@ update link as:-->/post/c5f6c3bd/markdown-render-exmaple.png
 google_site_verification: XXX
 ```
 
-提交验证即可。
-
-## 添加站点地图
-
-安装两个包：
+提交验证即可成功，接下来提供站点地图，安装一个包：
 
 ```bash
 npm install hexo-generator-sitemap --save
 ```
+
+使用如下命令重新生成静态页面后可以在 `/hexo/public` 目录下找到 `sitemap.xml` 文件：
+
+```bash
+hexo clean && hexo g
+```
+
+提交到 Github 后，再次进入 Google Search Console，点击站点地图，输入 `sitemap.xml`，点击提交即可。
+
+等待一段时间之后你的站点就可以在 Google 中搜索到了。
