@@ -335,3 +335,23 @@ update link as:-->/post/c5f6c3bd/markdown-render-exmaple.png
 计划通。
 
 再次生成静态页面，发现图片显示回归正常。
+
+## 让 Google 能够搜索到自己的博客
+
+[Google Search Console](https://search.google.com/search-console/welcome)
+
+进入这个站点，将包含`https://`的博客地址添加到右边的输入框中，然后选择其他验证方法-HTML标记，复制其中的 `context="XXX"` 中的 `XXX`，填入到 `themes/next/_config.yml`
+
+```yaml
+google_site_verification: XXX
+```
+
+提交验证即可。
+
+## 添加站点地图
+
+安装两个包：
+
+```bash
+npm install hexo-generator-sitemap --save
+```
