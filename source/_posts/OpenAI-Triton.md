@@ -2,8 +2,8 @@
 layout: p
 title: 'OpenAI: Triton'
 date: 2024-04-01 20:30:26
-tags: [MLSYS, COMPILER, OPERATION]
-categories: [MLSYS, COMPILER]
+tags: [MLSYS, Compiler, Operation, Triton, OpenAI]
+categories: [MLSYS, Compiler]
 ---
 
 学会使用和修改 OpenAI 的 Triton 深度学习编译器框架。
